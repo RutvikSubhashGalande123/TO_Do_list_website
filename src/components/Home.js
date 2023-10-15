@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Create from "./Create";
 import { CheckCircleFill, Circle, TrashFill } from "react-bootstrap-icons";
 import axios from "axios";
+import { baseurl } from "../backendurl";
 
 function Home() {
   const [todos, setTodos] = useState([]);
   const fetchTodos = async () => {
     await axios
-      .get("http://localhost:3001/get")
+      .get(`${baseurl}/get`)
       .then((result) => setTodos(result.data))
       .catch((err) => console.log(err));
   };
@@ -16,7 +17,7 @@ function Home() {
   }, []);
   const handleEdit = async (id) => {
     await axios
-      .put("http://localhost:3001/update/" + id)
+      .put(`${baseurl}/update/` + id)
       .then((result) => {
         //location.reload();
       })
@@ -25,9 +26,7 @@ function Home() {
   const handleDelete = async (id) => {
     try {
       console.log("ihewhfhf");
-      await axios
-        .delete("http://localhost:3001/delete/" + id)
-        .then((result) => {});
+      await axios.delete(`${baseurl}/delete/` + id).then((result) => {});
       fetchTodos();
     } catch (err) {
       console.log(err);
@@ -35,7 +34,7 @@ function Home() {
   };
   const handleTaskClick = (id, done) => {
     axios
-      .put(`http://localhost:3001/update/${id}`, { done: !done })
+      .put(`${baseurl}/update/${id}`, { done: !done })
       .then(() => {
         fetchTodos();
       })
