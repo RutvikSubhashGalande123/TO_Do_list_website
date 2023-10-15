@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Create from "./Create";
-import {
-  Check,
-  CheckCircleFill,
-  Circle,
-  TrashFill,
-  XCircleFill,
-} from "react-bootstrap-icons";
+import { CheckCircleFill, Circle, TrashFill } from "react-bootstrap-icons";
 import axios from "axios";
 
 function Home() {
@@ -67,7 +61,8 @@ function Home() {
               <CheckCircleFill className="icon" />
             ) : (
               <Circle
-                className="icon" id="red"
+                className="icon"
+                id="red"
                 onClick={() => handleTaskClick(todo._id, todo.done)}
               />
             )}
