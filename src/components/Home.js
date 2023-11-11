@@ -19,7 +19,7 @@ function Home() {
     await axios
       .put(`${baseurl}/update/` + id)
       .then((result) => {
-        //location.reload();
+  
       })
       .catch((err) => console.log(err));
   };
@@ -43,6 +43,7 @@ function Home() {
   console.log(todos);
   return (
     <div className="home">
+
       <h2>To Do List</h2>
       <h4> Write Your Task, What are you Doing Today</h4>
       <Create onAddTodo={fetchTodos} />
